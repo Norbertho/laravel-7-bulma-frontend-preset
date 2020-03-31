@@ -24,19 +24,12 @@ class BulmaPreset extends Preset
     }
     public static function installAuth()
     {
+        static::addAuthTemplates();
+        static::updateWelcomePage();
         static::scaffoldController();
-        static::scaffoldAuth();
     }
 
 
-        if($withAuth)
-        {
-            static::addAuthTemplates();
-        }
-        else
-        {
-            static::updateWelcomePage();
-        }
 
         
 
@@ -121,6 +114,24 @@ class BulmaPreset extends Preset
      *
      * @return void
      */
+
+    protected static function scaffoldController()
+    {
+        if (! is_dir($directory = app_path('Http/Controllers/Auth'))) {
+            mkdir($directory, 0755, true);
+        }
+
+        $filesystem = new Filesystem;
+
+        collect($filesystem->allFiles(base_path('vendor/laravel/ui/stubs/Auth')))
+            ->each(function (SplFileInfo $file) use ($filesystem) {
+                $filesystem->copy(
+                    $file->getPathname(),
+                    app_path('Http/Controllers/Auth/'.Str::replaceLast('.stub', '.php', $file->getFilename()))
+                );
+            });
+    }
+    
     protected static function addAuthTemplates()
     {
         // Add Home controller

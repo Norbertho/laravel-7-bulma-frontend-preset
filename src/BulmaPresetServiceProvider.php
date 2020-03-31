@@ -10,7 +10,7 @@ class BulmaPresetServiceProvider extends ServiceProvider
     public function boot()
     {
         UiCommand::macro('bulma', function ($command) {
-            TailwindBulmaPresetCssPreset::install();
+            BulmaPreset::install();
 
             $command->info('Bulma scaffolding installed successfully.');
 
