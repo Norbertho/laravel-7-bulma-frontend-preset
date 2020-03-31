@@ -1,16 +1,19 @@
-# Bulma Frontend Preset For Laravel Framework 5.5 and Up
+# Bulma Frontend Preset For Laravel 7 and Up
 
-Bulma Frontend Preset For Laravel Framework 5.5 and Up
+Bulma Frontend Preset For Laravel Framework 7 and Up
 
 *Current version*: **Bulma ^v0.8.0** + **Bulma Extensions ^v6.2.7**
 
 
 ## Usage
-1. Fresh install Laravel 5.5 (and up) and `cd` to your app.
-2. Install this preset via `composer require laravel-frontend-presets/bulma`. No need to register the service provider. Laravel 5.5 & up can auto detect the package.
-3. Use `php artisan preset bulma` for basic Bulma preset. **OR** Use `php artisan preset bulma-auth` for basic preset, Auth route entry and Bulma Auth views in one go.
+1. Fresh install Laravel 7 (and up) and `cd` to your app.
+2. Install this preset via `composer require laravel-7-frontend-presets/bulma`. No need to register the service provider. Laravel 5.5 & up can auto detect the package.
+3. Use `php artisan ui bulma` for basic Bulma preset. **OR** Use `php artisan ui bulma --auth` for basic preset, Auth route entry and Bulma Auth views in one go.
 4. `npm install`
 5. `npm run dev`
+6. `npm run dev` will give you an error: vertical-align: middle;
+7. go to node_modules then bulma-extension then bulma-slider then sass and edit the index.sass at line 86 delete the ; you only need vertical-align: middle and same with line 91 delete the ;
+8. `npm run dev` it should works now.
 6. Configure your favorite database (mysql, sqlite etc.)
 7. `php artisan migrate` to create basic user tables.
 8. `php artisan serve` (or equivalent) to run server and test preset.
@@ -24,4 +27,5 @@ Bulma Frontend Preset For Laravel Framework 5.5 and Up
 2. Customize `bulma.sass`, `bulma-extensions.sass`, `bulma-extensions.js` and `app.js` as needed.
 
 ## Screenshots
+![Bulma login screen](/screenshots/Laravel_7_bulma_frontend.jpg)
 ![Bulma login screen](/screenshots/bulma_login_screen.jpg)
