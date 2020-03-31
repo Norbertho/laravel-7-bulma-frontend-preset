@@ -3,25 +3,23 @@ namespace LaravelFrontendPresets\BulmaPreset;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Ui\UiCommand;
+use Laravel\Ui\AuthCommand;
 
 class BulmaPresetServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        UiCommand::macro('bulma', function (UiCommand $command) {
-            BulmaPreset::install(false);
-            $command->info('Bulma scaffolding installed successfully.');
-            $command->comment('Please run "npm install && npm run dev" to compile your fresh scaffolding.');
-        });
+        UiCommand::macro('bulma', function ($command) {
+            TailwindBulmaPresetCssPreset::install();
 
-        UiCommand::macro('bulma-auth', function (UiCommand $command) {
-            BulmaPreset::install(true);
-            $command->info('Bulma scaffolding with Auth views installed successfully.');
+            $command->info('Bulma scaffolding installed successfully.');
+
+            if ($command->option('auth')) {
+                BulmaPreset::installAuth();
+
+                $command->info('Bulma auth scaffolding installed successfully.');
+            }
+
             $command->comment('Please run "npm install && npm run dev" to compile your fresh scaffolding.');
         });
     }

@@ -1,11 +1,12 @@
 <?php
 namespace LaravelFrontendPresets\BulmaPreset;
 
-use Artisan;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Console\Presets\Preset;
-use Laravel\Ui\UiCommand;
+use Laravel\Ui\Presets\Preset;
+use Symfony\Component\Finder\SplFileInfo;
 
 class BulmaPreset extends Preset
 {
@@ -14,11 +15,19 @@ class BulmaPreset extends Preset
      *
      * @return void
      */
-    public static function install($withAuth = false)
+    public static function install()
     {
         static::updatePackages();
         static::updateSass();
         static::updateBootstrapping();
+        static::removeNodeModules();
+    }
+    public static function installAuth()
+    {
+        static::scaffoldController();
+        static::scaffoldAuth();
+    }
+
 
         if($withAuth)
         {
@@ -29,8 +38,7 @@ class BulmaPreset extends Preset
             static::updateWelcomePage();
         }
 
-        static::removeNodeModules();
-    }
+        
 
     /**
      * Update the given package array.
@@ -41,9 +49,15 @@ class BulmaPreset extends Preset
     protected static function updatePackageArray(array $packages)
     {
         return [
+            'laravel-mix' => '^5.0.1',
             'bulma' => '^0.8.0',
             'bulma-extensions' => '^6.2.7',
-        ] + Arr::except($packages, ['bootstrap']);
+        ] + Arr::except($packages, [
+            'bootstrap',
+            'bootstrap-sass',
+            'popper.js',
+            'laravel-mix',
+            ]);
     }
 
     /**
