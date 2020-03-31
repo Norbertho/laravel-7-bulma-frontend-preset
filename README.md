@@ -4,6 +4,10 @@ Bulma Frontend Preset For Laravel Framework 7 and Up
 
 *Current version*: **Bulma ^v0.8.0** + **Bulma Extensions ^v6.2.7**
 
+## Install
+Install this preset via `composer require laravel-7-frontend-presets/bulma`.
+
+and follow instructions below.
 
 ## Usage
 1. Fresh install Laravel 7 (and up) and `cd` to your app.
@@ -14,9 +18,9 @@ Bulma Frontend Preset For Laravel Framework 7 and Up
 6. `npm run dev` will give you an error: vertical-align: middle;
 7. go to node_modules then bulma-extension then bulma-slider then sass and edit the index.sass at line 86 delete the ; you only need vertical-align: middle and same with line 91 delete the ;
 8. `npm run dev` it should works now.
-6. Configure your favorite database (mysql, sqlite etc.)
-7. `php artisan migrate` to create basic user tables.
-8. `php artisan serve` (or equivalent) to run server and test preset.
+9. Configure your favorite database (mysql, sqlite etc.)
+10. `php artisan migrate` to create basic user tables.
+11. `php artisan serve` (or equivalent) to run server and test preset.
 
 ## Bulma Pagination Template
 1. Upto Laravel 5.6 - Vendor publish and replace the code from here [default.blade.php](https://gist.github.com/Laraveldeep/0797c5a4079e3a2a0ba5b2b0e98f0357)
