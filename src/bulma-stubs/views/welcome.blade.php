@@ -100,7 +100,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
-                    <p class="versioninfo">Version {{ app()->version() }}</p>
+                    <p class="versioninfo">Laravel Version {{ app()->version() }}</p>
                 </div>
 
                 <div class="links">
@@ -112,8 +112,8 @@
                 </div>
 
                 <div class="foundation_button_test">
-                    <p class="framwork_title">Bulma v0.7.4</p>
-                    <p class="framwork_title">Bulma Extension v4.0.2</p>
+                    <p class="framwork_title">Bulma v0.8.0</p>
+                    <p class="framwork_title">Bulma Extension v6.2.7</p>
 
                     <div class="block">
                         <a class="button is-primary">Primary</a>
